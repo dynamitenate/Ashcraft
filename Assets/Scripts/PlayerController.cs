@@ -30,17 +30,13 @@ public class PlayerController : MonoBehaviour
 	{
 		isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
 
-		moveInput = Input.GetAxisRaw("Horizontal");
+		moveInput = Input.GetAxis("Horizontal");
  		rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 	}
 
 	void Update()
     {
-		if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow))
-		{
-			rb.velocity = Vector2.up * jumpForce;
-		}
-		/*// Reset extraJumps when player hits ground again
+		// Reset extraJumps when player hits ground again
 		if (isGrounded)
 		{
 			remainingJumps = extraJumps;
@@ -55,6 +51,6 @@ public class PlayerController : MonoBehaviour
 		else if (Input.GetKeyDown(KeyCode.UpArrow) && remainingJumps == 0 && isGrounded)
 		{
 			rb.velocity = Vector2.up * jumpForce;
-		}*/
+		}
     }
 }
